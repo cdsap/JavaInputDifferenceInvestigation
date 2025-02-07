@@ -42,7 +42,7 @@ jobs:
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_TOKEN }}
 
-      - name: Upload test reports
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: zulu
