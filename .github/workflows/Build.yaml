@@ -201,7 +201,7 @@ jobs:
           heap-size: 600M
           script: ./gradlew connectedDemoDebugAndroidTest --daemon
 
-      - name: Run local tests (including Roborazzi) for the combined coverage report (only API 30)
+      - name: Run local tests (includding Roborazzi) for the combined coverage report (only API 30)
         if: matrix.api-level == 30
         # There is no need to verify Roborazzi tests to generate coverage.
         run: ./gradlew testDemoDebugUnitTest -Proborazzi.test.verify=false # Add Prod if we ever add JVM tests for prod
