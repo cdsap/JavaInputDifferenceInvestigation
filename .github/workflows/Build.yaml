@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - new_branch2
   pull_request:
 
 concurrency:
@@ -25,11 +25,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-
-      - name: Copy CI gradle.properties
-        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
-        
+    
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
