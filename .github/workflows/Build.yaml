@@ -42,6 +42,8 @@ jobs:
 
       - name: Check build-logic
         run: ./gradlew clean assembleDebug
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_TOKEN }}        
 
       - name: Gradle cache user home
         uses: actions/upload-artifact@v4
