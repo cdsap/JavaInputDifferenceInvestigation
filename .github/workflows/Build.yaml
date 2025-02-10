@@ -153,5 +153,5 @@ jobs:
         with:
           name: zulu-sl
           path: |
-             /home/runner/.gradle/*
+             /home/runner/.gradle/caches
 
