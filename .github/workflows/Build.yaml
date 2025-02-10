@@ -148,6 +148,14 @@ jobs:
       - name: Check badging
         run: ./gradlew :app:checkProdReleaseBadging
 
+      - name: Upload test reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: zulu
+          path: |
+             /home/runner/.gradle/
+
+
   androidTest:
     runs-on: ubuntu-latest
     timeout-minutes: 55
