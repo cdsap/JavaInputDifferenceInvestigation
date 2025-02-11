@@ -41,7 +41,7 @@ jobs:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
 
       - name: Check build-logic
-        run: ./gradlew clean assembleDebug
+        run: ./gradlew :app:assemble
 
       - name: Gradle cache user home
         uses: actions/upload-artifact@v4
