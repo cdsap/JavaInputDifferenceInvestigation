@@ -51,7 +51,7 @@ jobs:
         continue-on-error: true
         run: ./gradlew dependencyGuard
 
-      # Run local tests after screenshot tests to avoid wrong UP-TO-DATE. TODO: Ignore screenshots.
+      # Run local tests after screenshot tests to avoookoid wrong UP-TO-DATE. TODO: Ignore screenshots.
       - name: Run local tests
         run: ./gradlew testDemoDebug :lint:test
 
