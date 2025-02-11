@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - forcing_3
   pull_request:
 
 concurrency:
@@ -41,7 +41,9 @@ jobs:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
 
       - name: Check build-logic
-        run: ./gradlew :app:assemble
+        run: ./gradlew clean assembleDebug
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_TOKEN }}             
 
       - name: Gradle cache user home
         uses: actions/upload-artifact@v4
