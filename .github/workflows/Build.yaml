@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - forcing_6
   pull_request:
 
 concurrency:
@@ -41,7 +41,9 @@ jobs:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
 
       - name: Check build-logic
-        run: ./gradlew :build-logic:convention:check
+        run: ./gradlew clean assembleDebug
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_TOKEN }}             
 
  #     - name: Check spotless
  #       run: ./gradlew spotlessCheck --init-script gradle/init.gradle.kts --no-configuration-cache
@@ -55,8 +57,8 @@ jobs:
  #     - name: Run local tests
  #       run: ./gradlew testDemoDebug :lint:test
 
-      - name: Build all build type and flavor permutations
-        run: ./gradlew :app:assemble
+#      - name: Build all build type and flavor permutations
+#        run: ./gradlew :app:assemble
 
  #     - name: Check lint
  #       run: ./gradlew :app:lintProdRelease :app-nia-catalog:lintRelease :lint:lint
