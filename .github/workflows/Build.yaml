@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - forcing_9
   pull_request:
 
 concurrency:
@@ -59,6 +59,8 @@ jobs:
 
       - name: Build all build type and flavor permutations
         run: ./gradlew clean assembleDebug
+        env:
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_TOKEN }}           
 
  #     - name: Check lint
  #       run: ./gradlew :app:lintProdRelease :app-nia-catalog:lintRelease :lint:lint
