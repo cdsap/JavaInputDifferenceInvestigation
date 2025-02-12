@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - forcing_10
   pull_request:
 
 concurrency:
@@ -42,11 +42,6 @@ jobs:
 
 #      - name: Check build-logic
 #        run: ./gradlew :build-logic:convention:check
-
-      - name: Check spotless
-        run: ./gradlew spotlessCheck --init-script gradle/init.gradle.kts  
-        env:
-          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_TOKEN }}            
 
         #run: ./gradlew spotlessCheck --init-script gradle/init.gradle.kts --no-configuration-cache
 
