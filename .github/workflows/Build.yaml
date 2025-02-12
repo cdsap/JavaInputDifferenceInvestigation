@@ -48,7 +48,7 @@ jobs:
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_TOKEN }}            
 
- #     - name: Check Dependency Guard
+ #     - name: Chesck Dependency Guard
  #      id: dependencyguard_verify
  #       continue-on-error: true
  #       run: ./gradlew dependencyGuard
