@@ -56,7 +56,7 @@ jobs:
  #       run: ./gradlew testDemoDebug :lint:test
 
       - name: Build all build type and flavor permutations
-        run: ./gradlew :app:assemble
+        run: ./gradlew clean assembleDebug
 
  #     - name: Check lint
  #       run: ./gradlew :app:lintProdRelease :app-nia-catalog:lintRelease :lint:lint
