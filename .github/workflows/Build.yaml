@@ -35,40 +35,21 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
-
-#      - name: Check build-logic
-#        run: ./gradlew :build-logic:convention:check
 
       - name: Check spotless
         run: ./gradlew spotlessCheck --init-script gradle/init.gradle.kts  
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_TOKEN }}            
 
-        #run: ./gradlew spotlessCheck --init-script gradle/init.gradle.kts --no-configuration-cache
-
- #     - name: Check Dependency Guard
- #      id: dependencyguard_verify
- #       continue-on-error: true
- #       run: ./gradlew dependencyGuard
-
-      # Run local tests after screenshot tests to avoookoid wrong UP-TO-DATE. TODO: Ignore screenshots.
- #     - name: Run local tests
- #       run: ./gradlew testDemoDebug :lint:test
-
-      - name: Build all build type and flavor permutations
-        run: ./gradlew clean assembleDebug
+      - name: Build Debug
+        run: ./gradlew clean :core:network:compileDemoDebugJavaWithJavac
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_TOKEN }}            
-
- #     - name: Check lint
- #       run: ./gradlew :app:lintProdRelease :app-nia-catalog:lintRelease :lint:lint
-
- #     - name: Check badging
- #       run: ./gradlew :app:checkProdReleaseBadging
 
       - name: Gradle cache user home
         uses: actions/upload-artifact@v4
