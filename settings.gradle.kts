@@ -42,6 +42,21 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
+plugins {
+   id("com.gradle.develocity") version "3.19.1"
+}
+develocity {
+    server = "https://ge.solutions-team.gradle.com/"
+    allowUntrustedServer = true
+    buildScan {
+        uploadInBackground.set(true)
+        publishing { true }
+        obfuscation {
+            username { u ->"Thomas" }
+        }
+    }
+}
 rootProject.name = "nowinandroid"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

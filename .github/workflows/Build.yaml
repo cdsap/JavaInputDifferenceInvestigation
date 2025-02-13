@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - test_veri
+      - ksp_test
   pull_request:
 
 concurrency:
@@ -38,16 +38,9 @@ jobs:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}     
 
       - name: Check build-logic
-        run: ./gradlew clean assembleDebug
+        run: ./gradlew :app:assembleDebug --no-configuration-cache
         env:
           GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_TOKEN }}
-
-      - name: Upload test reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: zulu
-          path: |
-             /home/runner/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/4.12.0/2f4525d4a200e97e1b87449c2cd9bd2e25b7e8cd/
             
 
       
