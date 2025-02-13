@@ -36,11 +36,6 @@ jobs:
           java-version: 17
 
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
-
       - name: Build Debug
         run: ./gradlew clean :core:network:compileDemoDebugJavaWithJavac
         env:
